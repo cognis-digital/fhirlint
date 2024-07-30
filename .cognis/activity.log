@@ -1,3 +1,4 @@
 2024-06-11T08:44:04  feat(scan): pin the test dependencies
 2024-06-27T15:01:11  refactor: I have altered the code. pray I don't alter it further
 2024-07-13T10:18:18  ci(docs): lower memory on big inputs
+2024-07-30T17:35:25  ci(mcp): improve the demo scenario
