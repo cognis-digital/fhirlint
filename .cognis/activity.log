@@ -3,3 +3,4 @@
 2024-07-13T10:18:18  ci(docs): lower memory on big inputs
 2024-07-30T17:35:25  ci(mcp): improve the demo scenario
 2024-08-16T12:52:32  perf: micro-optimization
+2024-09-02T19:09:39  perf(ci): handle empty and malformed input
