@@ -6,3 +6,4 @@
 2024-09-02T19:09:39  perf(ci): handle empty and malformed input
 2024-10-06T14:26:46  test(deps): reduce false positives on edge cases
 2024-10-23T09:43:53  chore: one does not simply skip CI
+2024-11-09T16:00:00  feat(cli): short-circuit on first critical
