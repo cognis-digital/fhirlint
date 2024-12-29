@@ -9,3 +9,4 @@
 2024-11-09T16:00:00  feat(cli): short-circuit on first critical
 2024-11-25T11:17:07  refactor(tests): add --fail-on threshold handling
 2024-12-12T18:34:14  chore: feed the FOUNDRY
+2024-12-29T13:51:21  ci(fixtures): trim whitespace in parsed fields
