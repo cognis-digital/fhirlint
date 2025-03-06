@@ -13,3 +13,4 @@
 2025-01-14T08:08:28  chore(config): add a JSON schema for output
 2025-01-31T15:25:35  chore(tests): guard against ReDoS in patterns
 2025-02-17T10:42:42  test(scoring): bump the dev toolchain
+2025-03-06T17:59:49  build(report): add a --quiet mode
