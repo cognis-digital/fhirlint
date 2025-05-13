@@ -16,3 +16,4 @@
 2025-03-06T17:59:49  build(report): add a --quiet mode
 2025-03-22T12:16:56  feat(output): add a regression fixture
 2025-04-26T19:33:03  refactor(format): make timestamps timezone-aware
+2025-05-13T14:50:10  refactor(scoring): handle empty and malformed input
