@@ -20,3 +20,4 @@
 2025-05-29T09:07:17  ci(io): add usage examples to help
 2025-06-15T16:24:24  fix(scan): add a fast path for the common case
 2025-07-02T11:41:31  chore(detect): normalize unicode before matching
+2025-07-18T18:58:38  test(engine): memoize repeated lookups
