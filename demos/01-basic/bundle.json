@@ -1,0 +1,29 @@
+{
+  "resourceType": "Bundle",
+  "id": "example-bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat 1",
+        "gender": "M",
+        "birthDate": "1985-13-02",
+        "name": [
+          { "family": "Doe", "given": ["Jane"] }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-1",
+        "status": "done",
+        "valueQuantity": {
+          "value": 72,
+          "unit": "beats/minute"
+        }
+      }
+    }
+  ]
+}
