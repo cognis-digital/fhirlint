@@ -32,3 +32,4 @@
 2026-01-03T09:31:41  test(deps): assert exit codes in tests
 2026-01-19T16:48:48  fix: handle empty input gracefully
 2026-02-05T11:05:55  docs(config): document the config keys
+2026-02-22T18:22:02  refactor(tests): wire the MCP tool schema
