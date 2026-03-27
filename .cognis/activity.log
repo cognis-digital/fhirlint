@@ -34,3 +34,4 @@
 2026-02-05T11:05:55  docs(config): document the config keys
 2026-02-22T18:22:02  refactor(tests): wire the MCP tool schema
 2026-03-11T13:39:09  feat: with great power comes great test coverage
+2026-03-27T08:56:16  ci(fixtures): support stdin as a source
