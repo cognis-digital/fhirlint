@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/fhirlint",
+  "version": "0.2.0",
+  "description": "JavaScript port of fhirlint (Cognis Neural Suite)",
+  "bin": {
+    "fhirlint": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
