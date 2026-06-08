@@ -1,2 +1,11 @@
-"""FHIRLINT — Validate FHIR R4/R5 resources and bundles against profiles (US Core, etc.) with precise, line-level error reporting."""
-__version__ = "0.1.0"
+"""fhirlint — part of the Cognis Neural Suite."""
+try:  # re-export the tool's public API + identity from core
+    from fhirlint.core import *  # noqa: F401,F403
+except Exception:  # pragma: no cover
+    pass
+try:
+    from fhirlint.core import TOOL_NAME, TOOL_VERSION
+except Exception:  # pragma: no cover
+    TOOL_NAME = "fhirlint"
+    TOOL_VERSION = "0.1.0"
+__version__ = TOOL_VERSION
