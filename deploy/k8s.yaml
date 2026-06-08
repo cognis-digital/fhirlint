@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: fhirlint, labels: { app: fhirlint } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: fhirlint } }
+  template:
+    metadata: { labels: { app: fhirlint } }
+    spec:
+      containers:
+        - name: fhirlint
+          image: ghcr.io/cognis-digital/fhirlint:latest
+          ports: [{ containerPort: 8000 }]
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "500m", memory: "256Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: fhirlint }
+spec:
+  selector: { app: fhirlint }
+  ports: [{ port: 80, targetPort: 8000 }]
