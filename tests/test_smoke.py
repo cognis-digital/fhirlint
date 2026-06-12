@@ -5,13 +5,11 @@ import os
 import sys
 import subprocess
 
-import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from fhirlint import (  # noqa: E402
-    lint_text, lint_file, has_errors, summarize, Finding,
-    TOOL_NAME, TOOL_VERSION,
+    lint_text, lint_file, has_errors, summarize, TOOL_NAME, TOOL_VERSION,
 )
 
 DEMO = os.path.join(

@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-fhirlint
+pip install "git+https://github.com/cognis-digital/fhirlint.git"
 fhirlint scan .            # â†’ prioritized findings in seconds
 ```
 
@@ -50,7 +50,7 @@ A fast, JSON-native linter with developer-friendly output and a GitHub Action â€
 ## Quick start
 
 ```bash
-pip install cognis-fhirlint
+pip install "git+https://github.com/cognis-digital/fhirlint.git"
 fhirlint --version
 fhirlint scan .                       # scan current project
 fhirlint scan . --format json         # machine-readable
