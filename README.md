@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/fhirlint.git"
 fhirlint scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+FHIRLINT checks healthcare data files (called FHIR resources) for mistakes before they cause problems in your software or data pipeline. Think of it as a spell-checker for medical record files: you point it at a file or folder, and it tells you exactly which lines have errors and why. It works from the command line, fits into automated testing pipelines, and can also be driven by AI agents via an MCP server connection. It is aimed at software developers and data engineers who build or maintain systems that exchange patient data using the FHIR standard.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why fhirlint?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -47,6 +53,42 @@ A fast, JSON-native linter with developer-friendly output and a GitHub Action �
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`fhirlint` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/fhirlint/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/fhirlint/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/fhirlint.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/fhirlint.git"  # uv
+pip install "git+https://github.com/cognis-digital/fhirlint.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/fhirlint.git
+cd fhirlint && pip install .
+```
+
+Then run:
+```sh
+fhirlint --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
