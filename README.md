@@ -20,6 +20,33 @@ pip install cognis-fhirlint
 fhirlint scan .            # → prioritized findings in seconds
 ```
 
+
+## Usage — step by step
+
+1. Install (Python 3.9+):
+   ```bash
+   pip install fhirlint
+   ```
+2. Validate a single FHIR R4 resource (use `-` for stdin):
+   ```bash
+   fhirlint validate patient.json
+   cat patient.json | fhirlint validate -
+   ```
+3. Validate a bundle or several files at once:
+   ```bash
+   fhirlint validate bundle.json
+   fhirlint validate a.json b.json c.json
+   ```
+4. Read the output: the table prints `OK` per clean file, or per-finding lines
+   with `SEVERITY`, line number, path, message and `[code]`, plus a count
+   summary. Use `--format json` to read `files[].findings[]` and the top-level
+   `ok` flag. Exit codes: `0` clean (warnings allowed), `1` error-severity
+   findings, `2` usage/file error.
+5. Gate CI on validity:
+   ```bash
+   fhirlint validate bundle.json --format json > fhir-report.json
+   ```
+
 ## Contents
 
 - [Why fhirlint?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
