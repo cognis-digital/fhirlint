@@ -34,3 +34,6 @@ fhirlint = "fhirlint.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["fhirlint"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
