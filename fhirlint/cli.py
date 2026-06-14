@@ -33,7 +33,19 @@ from .core import lint_text, lint_file, has_errors, summarize, Finding
 def _read_source(path: str) -> tuple[str, list[Finding]]:
     """Return (label, findings) for one source path ('-' = stdin)."""
     if path == "-":
-        return "<stdin>", lint_text(sys.stdin.read())
+        try:
+            text = sys.stdin.read()
+        except UnicodeDecodeError as exc:
+            return "<stdin>", [Finding(
+                "error", "encoding-error",
+                f"stdin is not valid UTF-8: {exc.reason}", "<stdin>", 0,
+            )]
+        except OSError as exc:
+            return "<stdin>", [Finding(
+                "error", "io-error",
+                f"could not read stdin: {exc}", "<stdin>", 0,
+            )]
+        return "<stdin>", lint_text(text)
     try:
         return path, lint_file(path)
     except FileNotFoundError:
@@ -92,6 +104,17 @@ def _build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv=None) -> int:
+    try:
+        return _main(argv)
+    except KeyboardInterrupt:
+        print("\ninterrupted", file=sys.stderr)
+        return 2
+    except Exception as exc:  # pragma: no cover
+        print(f"fhirlint: unexpected error: {exc}", file=sys.stderr)
+        return 2
+
+
+def _main(argv=None) -> int:
     parser = _build_parser()
     args = parser.parse_args(argv)
 
@@ -100,6 +123,10 @@ def main(argv=None) -> int:
         return 2
 
     if args.command == "validate":
+        if not args.paths:
+            print("fhirlint: no files specified", file=sys.stderr)
+            return 2
+
         results = [_read_source(p) for p in args.paths]
         any_error = any(has_errors(f) for _, f in results)
 

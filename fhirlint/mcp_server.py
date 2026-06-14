@@ -1,6 +1,8 @@
-"""FHIRLINT MCP server — exposes scan() as an MCP tool for Cognis.Studio."""
+"""FHIRLINT MCP server — exposes lint_text() as an MCP tool for Cognis.Studio."""
 from __future__ import annotations
-from fhirlint.core import scan, to_json
+import json
+import sys
+from fhirlint.core import lint_text
 
 def serve() -> int:
     """Start an MCP stdio server. Requires the optional 'mcp' extra:
@@ -8,15 +10,21 @@ def serve() -> int:
     """
     try:
         from mcp.server.fastmcp import FastMCP
-    except Exception:
-        print("Install the MCP extra: pip install 'cognis-fhirlint[mcp]'")
+    except ImportError:
+        print(
+            "Install the MCP extra: pip install 'cognis-fhirlint[mcp]'",
+            file=sys.stderr,
+        )
         return 1
     app = FastMCP("fhirlint")
 
     @app.tool()
     def fhirlint_scan(target: str) -> str:
-        """Validate FHIR R4/R5 resources and bundles against profiles (US Core, etc.) with precise, line-level error reporting.. Returns JSON findings."""
-        return to_json(scan(target))
+        """Validate a FHIR R4 JSON resource or bundle. Returns JSON findings."""
+        if not isinstance(target, str) or not target.strip():
+            return json.dumps({"error": "target must be a non-empty JSON string"})
+        findings = lint_text(target)
+        return json.dumps([f.to_dict() for f in findings], indent=2)
 
     app.run()
     return 0

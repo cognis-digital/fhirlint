@@ -30,6 +30,9 @@ import re
 from dataclasses import dataclass
 from typing import Any, Iterable
 
+TOOL_NAME = "fhirlint"
+TOOL_VERSION = "0.1.0"
+
 
 # --------------------------------------------------------------------------
 # Finding model
@@ -368,6 +371,10 @@ def lint_obj(obj: Any, raw_text: str = "") -> list[Finding]:
 
 def lint_text(text: str) -> list[Finding]:
     """Lint a JSON string containing a FHIR resource or bundle."""
+    if not isinstance(text, str):
+        return [Finding("error", "bad-input", "input must be a string", "(root)", 0)]
+    if not text.strip():
+        return [Finding("error", "empty-input", "input is empty", "(root)", 0)]
     try:
         obj = json.loads(text)
     except json.JSONDecodeError as exc:
@@ -381,8 +388,15 @@ def lint_text(text: str) -> list[Finding]:
 
 def lint_file(path: str) -> list[Finding]:
     """Lint a FHIR JSON file on disk."""
-    with open(path, "r", encoding="utf-8") as fh:
-        return lint_text(fh.read())
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            return lint_text(fh.read())
+    except UnicodeDecodeError as exc:
+        return [Finding(
+            "error", "encoding-error",
+            f"file is not valid UTF-8: {exc.reason}",
+            path, 0,
+        )]
 
 
 def has_errors(findings: Iterable[Finding]) -> bool:
