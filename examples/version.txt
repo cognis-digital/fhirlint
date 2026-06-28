@@ -1,0 +1,3 @@
+$ fhirlint-emit --version
+
+fhirlint 0.1.0

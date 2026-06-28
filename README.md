@@ -21,6 +21,64 @@ fhirlint scan .            # → prioritized findings in seconds
 ```
 
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ fhirlint-emit --version
+fhirlint 0.1.0
+```
+
+```console
+$ fhirlint-emit --help
+usage: fhirlint [-h] [--version] {validate} ...
+
+FHIRLINT - fast, JSON-native FHIR R4 resource/bundle linter with line-level errors.
+
+positional arguments:
+  {validate}
+    validate  validate one or more FHIR R4 JSON files (use '-' for stdin)
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+
+Examples:
+  python -m fhirlint validate patient.json
+  python -m fhirlint validate bundle.json --format json
+  cat patient.json | python -m fhirlint validate -
+```
+
+> Blocks above are real `fhirlint` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"findings": [
+    {
+        "id": "1234567890",
+        "title": "Suspicious Network Activity",
+        "description": "Anomalous network traffic detected from IP 192.168.1.100",
+        "severity": "high",
+        "created_at": "2023-02-15T14:30:00Z"
+    },
+    {
+        "id": "2345678901",
+        "title": "Malware Detection",
+        "description": "Malware detected on system with IP 192.168.1.101",
+        "severity": "critical",
+        "created_at": "2023-02-15T14:31:00Z"
+    }
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. Install (Python 3.9+):

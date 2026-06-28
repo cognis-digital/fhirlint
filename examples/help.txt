@@ -1,0 +1,18 @@
+$ fhirlint-emit --help
+
+usage: fhirlint [-h] [--version] {validate} ...
+
+FHIRLINT - fast, JSON-native FHIR R4 resource/bundle linter with line-level errors.
+
+positional arguments:
+  {validate}
+    validate  validate one or more FHIR R4 JSON files (use '-' for stdin)
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+
+Examples:
+  python -m fhirlint validate patient.json
+  python -m fhirlint validate bundle.json --format json
+  cat patient.json | python -m fhirlint validate -
